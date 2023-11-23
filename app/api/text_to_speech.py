@@ -16,8 +16,8 @@ async def convert_text_to_speech(file: UploadFile = File(...), rate: int = 150):
 
     files_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'files')
     os.makedirs(files_folder, exist_ok=True)
-
     file_path = os.path.join(files_folder, file.filename)
+
     with open(file_path, "wb") as file_output:
         file_output.write(await file.read())
 
@@ -30,10 +30,8 @@ async def convert_text_to_speech(file: UploadFile = File(...), rate: int = 150):
 
     output_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'synthesized_audio')
     os.makedirs(output_folder, exist_ok=True)
-
     output_path = os.path.join(output_folder, "synthesized_audio.wav")
     output_file_path = text_to_speech(text , output_path , rate=rate)
-
     delete_files("files", [file.filename])
 
     return {"message": "Text converted to speech successfully.", "audio_file": output_file_path}

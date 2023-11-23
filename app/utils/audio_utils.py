@@ -9,9 +9,7 @@ def mp3_to_wav(mp3_file, wav_file):
 
 def save_uploaded_file(file, file_name):
     file_path = os.path.join(AUDIO_FOLDER, file_name)
-
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
     with open(file_path, "wb") as f:
         f.write(file.read())
 
@@ -19,12 +17,10 @@ def save_and_convert_audio(file):
     file_name, file_extension = os.path.splitext(file.filename)
     file_name = file_name + '.wav'
     full_wav_path = os.path.join(AUDIO_FOLDER, file_name)
-
     if file_extension.lower() == '.mp3':
         mp3_to_wav(file.file, full_wav_path)
     else:
         save_uploaded_file(file.file, full_wav_path)
-
     return full_wav_path
 
 def read_output_file():
