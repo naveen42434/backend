@@ -30,9 +30,3 @@ def save_and_convert_audio(file):
 def read_output_file():
     with open(os.path.join(AUDIO_FOLDER, 'Transcription.txt'), 'r') as output_file:
         return output_file.read()
-
-def delete_files(files):
-    for file_name in files:
-        file_path = os.path.join(AUDIO_FOLDER, file_name)
-        if os.path.exists(file_path):
-            os.remove(file_path)

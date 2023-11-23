@@ -46,3 +46,10 @@
     --header 'accept: application/json' \
     --form 'file=@"./path/to/your/audio/file/"'
     ```
+   
+4. Test the `/synthesize/` endpoint by uploading an Text or pdf or docx file:
+    ```bash
+    curl --location 'http://127.0.0.1:1234/synthesize' \
+    --form 'file=@path/to/your/file.pdf"' \
+    --form 'rate="150"'
+    ```

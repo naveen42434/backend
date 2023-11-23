@@ -5,3 +5,7 @@ azure-cognitiveservices-speech
 pydub
 pydantic-settings
 python-multipart
+PyPDF2
+docx
+pyttsx3
+python-docx
