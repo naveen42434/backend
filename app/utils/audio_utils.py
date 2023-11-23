@@ -28,7 +28,7 @@ def save_and_convert_audio(file):
     return full_wav_path
 
 def read_output_file():
-    with open(os.path.join(AUDIO_FOLDER, 'output.txt'), 'r') as output_file:
+    with open(os.path.join(AUDIO_FOLDER, 'Transcription.txt'), 'r') as output_file:
         return output_file.read()
 
 def delete_files(files):

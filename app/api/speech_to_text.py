@@ -10,5 +10,5 @@ async def transcribe_audio_endpoint(file: UploadFile = File(...)):
     full_wav_path = save_and_convert_audio(file)
     transcribe_audio(full_wav_path)
     output_content = read_output_file()
-    delete_files(['output.txt', full_wav_path])
+    delete_files(['Transcription.txt', full_wav_path])
     return JSONResponse(content={"message": "Transcription completed", "output": output_content}, status_code=200)

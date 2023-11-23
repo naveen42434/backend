@@ -11,12 +11,11 @@ def transcribe_audio(file_path):
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     def handle_recognized_speech(evt):
-        with open(os.path.join(os.path.dirname(file_path), 'output.txt'), 'a') as file:
+        with open(os.path.join(os.path.dirname(file_path), 'Transcription.txt'), 'a') as file:
             file.write(evt.result.text)
-        print("Recognized: {}".format(evt.result.text))
 
     def recognition_completed(evt):
-        print("Transcription completed.")
+        print("Transcription Completed.")
         evt.set()
 
     transcription_complete_event = threading.Event()
