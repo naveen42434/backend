@@ -15,8 +15,6 @@ def transcribe_audio(file_path):
             print("Recognized_speech:",evt.result.text)
 
     def recognition_completed(evt):
-        print("Recognized_speech:", evt.result.text)
-        print("Transcription Completed.")
         evt.set()
 
     transcription_complete_event = threading.Event()
@@ -25,8 +23,7 @@ def transcribe_audio(file_path):
     speech_recognizer.session_stopped.connect(lambda evt: recognition_completed(transcription_complete_event))
 
     speech_recognizer.start_continuous_recognition()
-    print("execution1")
     transcription_complete_event.wait(timeout=60)
-    print("execution2")
     speech_recognizer.stop_continuous_recognition()
-    print("end")
+    transcription_complete_event.wait(timeout=60)
+    speech_recognizer.stop_continuous_recognition()
